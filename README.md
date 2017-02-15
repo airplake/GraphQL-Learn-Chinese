@@ -6,7 +6,7 @@ GraphQL是一种支持API的查询语言，同时也是根据你的数据自定�
 
 一个GraphQL服务是通过定义类型（type）和type上的fields, 然后给每一个type里的fields提供函数来创建的。比如，一个GraphQL服务要告诉我们谁是已登陆的用户（我自己）以及用户的名字可能会是这样的：
 
-```js
+```json
 type Query {
   me: User
 }
