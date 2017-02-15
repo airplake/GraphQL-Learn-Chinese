@@ -41,5 +41,27 @@ function User_name(user) {
 }
 ```
 
+能够生成以下JSON结果：
+
+```
+{
+  "me": {
+    "name": "Luke Skywalker"
+  }
+}
+```
+
+学习更多关于GraphQL - 查询语句，类型系统，GraphQL服务如何工作，以及用GraphQL来解决一般问题的最佳实践 - 这些就是这个部分所写的内容。
+
+
+
+
+
+
+
+
+
+
+
 
 
