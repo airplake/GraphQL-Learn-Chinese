@@ -1,5 +1,5 @@
 # Summary
 
 * [GraphQL 介绍](README.md)
-* [First Chapter](chapter1.md)
+* [查询语句和转变](chapter1.md)
 
