@@ -30,5 +30,56 @@ Field _name_ 返回一个 _String _类型，在这个情况下是星际争霸主
 
 > 对了，还有一件事 - 上面的语句是交互性（interactive）的。言下之意你可以按照你的喜好来获取新的结果。试着在查询语句里添加一个 _appearsIn_ field 到 _hero_ 对象里，然后看新的结果
 
-在之前的例子里，我们只是查询英雄的名字对应 String 的回馈，但是 fields 也能指向对象。在这种情况里，你能给那个对象创建一个 fields 的 _sub-selection。GraphQL语句能遍历相关联的对象和它们的 fields，让客户端能够在一次请求中获取到多个相关数据_
+在之前的例子里，我们只是查询英雄的名字对应 String 的回馈，但是 fields 也能指向对象。在这种情况里，你能给那个对象创建一个 fields 的 _sub-selection。GraphQL_语句能遍历相关联的对象和它们的 fields，让客户端能够在一次请求中获取到多个相关数据，而不是像传统的REST架构里需要反复请求多次。
+
+```
+{
+  hero {
+    name
+    # Queries can have comments!
+    friends {
+      name
+    }
+  }
+}
+```
+
+```
+{
+  "data": {
+    "hero": {
+      "name": "R2-D2",
+      "friends": [
+        {
+          "name": "Luke Skywalker"
+        },
+        {
+          "name": "Han Solo"
+        },
+        {
+          "name": "Leia Organa"
+        }
+      ]
+    }
+  }
+}
+```
+
+在这个例子中可以看到，_friends_ field 返回了一组数据单元。对于GraphQL语句来说，单数据元还是一个列表的数据元都是一样的，但是基于表达的数据模式我们知道最后会获得的是哪一个。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
