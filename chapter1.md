@@ -236,5 +236,26 @@ fragment comparisonFields on Character {
 2. 将 $variableName 声明成一个语句接受的变量
 3. 将 variableName: value 作为分开的，传输友好（一般是JSON）的变量字典。
 
+这里是把他们全部放到一起的样子：
+
+```js
+query HeroNameAndFriends($episode: Episode) {
+  hero(episode: $episode) {
+    name
+    friends {
+      name
+    }
+  }
+}
+```
+
+```
+# 变量
+
+{
+  "episode": "JEDI"
+}
+```
+
 
 
