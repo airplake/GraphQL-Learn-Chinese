@@ -119,3 +119,128 @@ Field _name_ 返回一个 _String _类型，在这个情况下是星际争霸主
 
 [点击阅读更多关于GraphQL类型系统的信息。](http://graphql.org/learn/schema)
 
+
+
+### 别名
+
+如果你够仔细，已经已经发现了它，因为结果对象fieds对应查询语句的fieds但是没有包含参数，所以你不能直接用不同的参数查询同一个fields。这就是为什么你需要 _别名 - _它让你能够重命名你的fields结果到任何你想要的名字。
+
+```js
+{
+  empireHero: hero(episode: EMPIRE) {
+    name
+  }
+  jediHero: hero(episode: JEDI) {
+    name
+  }
+}
+```
+
+```js
+{
+  "data": {
+    "empireHero": {
+      "name": "Luke Skywalker"
+    },
+    "jediHero": {
+      "name": "R2-D2"
+    }
+  }
+}
+```
+
+在上面的例子里，两个 `hero` fields 将会冲突，但是因为我们能重命名它们到不同的名字，这样我们就能够在一个请求中获得两个结果了。
+
+
+
+### 片段（Fragments）
+
+比如我们有一个相对复杂的app页面，让我们可以对比查看两个英雄。你可以想象这样一个查询语句一下子变得的非常复杂，因为我们需要重复fields至少两次 - 每次获取一边的数据。
+
+这就是为什么GraphQL包含重用组件叫做 _片段。_分片让你可以构建若干组fields，然后当你需要时将它们包含到查询语句中。这里有一个让你用片段来解决上面那种情况的例子：
+
+```js
+{
+  leftComparison: hero(episode: EMPIRE) {
+    ...comparisonFields
+  }
+  rightComparison: hero(episode: JEDI) {
+    ...comparisonFields
+  }
+}
+​
+fragment comparisonFields on Character {
+  name
+  appearsIn
+  friends {
+    name
+  }
+}
+```
+
+```js
+{
+  "data": {
+    "leftComparison": {
+      "name": "Luke Skywalker",
+      "appearsIn": [
+        "NEWHOPE",
+        "EMPIRE",
+        "JEDI"
+      ],
+      "friends": [
+        {
+          "name": "Han Solo"
+        },
+        {
+          "name": "Leia Organa"
+        },
+        {
+          "name": "C-3PO"
+        },
+        {
+          "name": "R2-D2"
+        }
+      ]
+    },
+    "rightComparison": {
+      "name": "R2-D2",
+      "appearsIn": [
+        "NEWHOPE",
+        "EMPIRE",
+        "JEDI"
+      ],
+      "friends": [
+        {
+          "name": "Luke Skywalker"
+        },
+        {
+          "name": "Han Solo"
+        },
+        {
+          "name": "Leia Organa"
+        }
+      ]
+    }
+  }
+}
+```
+
+你能看到上面的语句对于重复的fields可以变得可重用。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
