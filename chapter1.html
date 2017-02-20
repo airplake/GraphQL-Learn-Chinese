@@ -349,6 +349,40 @@ fragment comparisonFields on Character {
 <li>&#x5C06; $variableName &#x58F0;&#x660E;&#x6210;&#x4E00;&#x4E2A;&#x8BED;&#x53E5;&#x63A5;&#x53D7;&#x7684;&#x53D8;&#x91CF;</li>
 <li>&#x5C06; variableName: value &#x4F5C;&#x4E3A;&#x5206;&#x5F00;&#x7684;&#xFF0C;&#x4F20;&#x8F93;&#x53CB;&#x597D;&#xFF08;&#x4E00;&#x822C;&#x662F;JSON&#xFF09;&#x7684;&#x53D8;&#x91CF;&#x5B57;&#x5178;&#x3002;</li>
 </ol>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x628A;&#x4ED6;&#x4EEC;&#x5168;&#x90E8;&#x653E;&#x5230;&#x4E00;&#x8D77;&#x7684;&#x6837;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-js">query HeroNameAndFriends($episode: Episode) {
+  hero(episode: $episode) {
+    name
+    friends {
+      name
+    }
+  }
+}
+</code></pre>
+<pre><code># &#x53D8;&#x91CF;
+
+{
+  &quot;episode&quot;: &quot;JEDI&quot;
+}
+</code></pre><pre><code class="lang-js">{
+  <span class="hljs-string">&quot;data&quot;</span>: {
+    <span class="hljs-string">&quot;hero&quot;</span>: {
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;R2-D2&quot;</span>,
+      <span class="hljs-string">&quot;friends&quot;</span>: [
+        {
+          <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Luke Skywalker&quot;</span>
+        },
+        {
+          <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Han Solo&quot;</span>
+        },
+        {
+          <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Leia Organa&quot;</span>
+        }
+      ]
+    }
+  }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -388,7 +422,7 @@ fragment comparisonFields on Character {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"查询语句和转变","level":"1.2","depth":1,"previous":{"title":"GraphQL 介绍","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter1.md","mtime":"2017-02-16T11:39:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-16T11:39:23.765Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"查询语句和转变","level":"1.2","depth":1,"previous":{"title":"GraphQL 介绍","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter1.md","mtime":"2017-02-20T03:34:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-02-20T03:35:16.633Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
